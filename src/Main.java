@@ -7,8 +7,8 @@ public class Main {
     Prints out a form letter with calculated mortgage payment amounts.
      */
     public static void main (String[] args){
-        double intrestRate;
-        intrestRate = 3.5;
+        int creditScore = 850;
+        double intrestRate= getInterestRate(creditScore);
         int principal = 125000; //in dollars
         int numberOfYears = 30;
         double futureInterestRate =2.5;
@@ -47,5 +47,26 @@ public class Main {
     }
 
 
+    public static double getInterestRate (int creditScore){
+        double interestRate = 15.0;
 
+        boolean isPerfectScore = creditScore == 850;
+        System.out.println("Is my credit score perfect? isPerfectScore:" + isPerfectScore);
+
+        if(isPerfectScore){
+            interestRate = 0.25;
+        }else if (creditScore >= 800){
+            interestRate = 1.5;
+        }else if(creditScore >= 700){
+            interestRate = 4.75;
+        }else{
+            interestRate = 10;
+        }
+
+        if(!isPerfectScore && creditScore > 500){
+            interestRate -=0.5;
+        }
+
+        return interestRate;
+    }
 }
